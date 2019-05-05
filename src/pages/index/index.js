@@ -1,5 +1,10 @@
-import Taro, { Component } from '@tarojs/taro'
-import { View, Text, Image, Video } from '@tarojs/components'
+import Taro, { Component, Events } from '@tarojs/taro'
+import { View, Text, Image, Video, Button, Icon, Progress, Checkbox, Switch, Form, Slider, Picker, PickerView, PickerViewColumn } from '@tarojs/components'
+
+import Welcome from './welcome'
+import Clock from './clock'
+import Toggle from './toggle'
+
 import './index.scss'
 import namedJson from './1.json'
 import namedPng from './1.jpeg'
@@ -7,29 +12,42 @@ import namedVideo from './1.mp4'
 
 export default class Index extends Component {
 
-  config = {
-    navigationBarTitleText: '首页'
+  constructor(props) {
+    super(props)
+    const events = new Events()
+    // events.on('click_button', this.click_button.bind(this))
+    this.state = {isOn: false}
   }
 
-  componentWillMount () { }
+  click_button (e) {
+    let b = this.state.isOn
+    Taro.showToast({title: "click_button"})
+    this.setState({isOn: !b})
 
-  componentDidMount () { }
+    Taro.showNavigationBarLoading();
+  }
 
-  componentWillUnmount () { }
-
-  componentDidShow () { }
-
-  componentDidHide () { }
+  onClick () {
+    Taro.showToast({title: "onClick"})
+    const events = new Events()
+    events.trigger('click_button')
+  }
 
   render () {
     return (
-      <View className='ignore'>
-        hello
-      <View>
-        from json file, namedJson.x: {namedJson.x}
-      </View>
-        <Image src={namedPng} />
+      <View className='container'>
         <Video width='100px' height='100px' src={namedVideo} />
+        <Button size='mini' >按钮</Button>
+        <View> {Taro.getEnv()} </View>
+        <Button size='mini' type='warn' onClick={this.click_button.bind(this)}>按钮</Button>
+        <View> {this.state.isOn ? 'On' : 'Off'} </View>
+        <View>
+        from json file, namedJson.x: {namedJson.x}
+        </View>
+        <Welcome />
+        <Clock />
+        <Toggle />
+        <Image src={namedPng} /> 
       </View>
     )
   }
