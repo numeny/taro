@@ -1,5 +1,5 @@
 import Taro, { Component, Events } from '@tarojs/taro'
-import { View, Text, Image, Video, Button, Icon, Progress, Checkbox, Switch, Form, Slider, Picker, PickerView, PickerViewColumn } from '@tarojs/components'
+import { View, Text, Image, Video, Button, Icon, Progress, Checkbox, Switch, Form, Slider, Picker, PickerView, PickerViewColumn, Swiper, SwiperItem } from '@tarojs/components'
 
 import Welcome from './welcome'
 import Clock from './clock'
@@ -7,8 +7,8 @@ import Toggle from './toggle'
 
 import './index.scss'
 import namedJson from './1.json'
-import namedPng from './1.jpeg'
-import namedVideo from './1.mp4'
+import namedPng from '@images/index/1.jpeg'
+import namedVideo from '@res/video/1.mp4'
 
 export default class Index extends Component {
 
@@ -21,7 +21,11 @@ export default class Index extends Component {
 
   click_button (e) {
     let b = this.state.isOn
-    Taro.showToast({title: "click_button"})
+
+    Taro.showToast({title: Adef})
+
+    Taro.navigateTo({url: '/v.html'})
+
     this.setState({isOn: !b})
 
     Taro.showNavigationBarLoading();
@@ -36,6 +40,23 @@ export default class Index extends Component {
   render () {
     return (
       <View className='container'>
+        <Swiper
+          className='test-h'
+          indicatorColor='#999'
+          indicatorActiveColor='#333'
+          circular
+          indicatorDots
+          autoplay>
+          <SwiperItem>
+            <Image src={namedPng} width="100%" />
+          </SwiperItem>
+          <SwiperItem>
+            <Image src={namedPng} width="100%" />
+          </SwiperItem>
+          <SwiperItem>
+            <Image src={namedPng} width="100%" />
+          </SwiperItem>
+        </Swiper>
         <Video width='100px' height='100px' src={namedVideo} />
         <Button size='mini' >按钮</Button>
         <View> {Taro.getEnv()} </View>

@@ -6,6 +6,6 @@ module.exports = {
   },
   weapp: {},
   h5: {
-    port: 3005
+    port: 3008
   }
 }

@@ -14,7 +14,7 @@ export default class Toggle extends Component {
     let newState = !this.state.isToggleOn
 
     this.setState({isToggleOn: newState})
-    /*
+    /* NO FUNCTION
     this.setState(prevState => {
       isToggleOn: !prevState.isToggleOn
     })
@@ -26,7 +26,7 @@ export default class Toggle extends Component {
   render () {
     return (
       <View>
-        <Button onClick={this.onClick.bind(this)}>
+        <Button size='mini' type='warn' onClick={this.onClick.bind(this)}>
           {this.state.isToggleOn ? 'ON' : 'OFF'}
         </Button>
         {this.state.isToggleOn ? <View>login</View> : <View>logout</View>}

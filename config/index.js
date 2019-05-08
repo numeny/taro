@@ -1,3 +1,4 @@
+const path = require('path')
 const config = {
   projectName: 'chrome1',
   date: '2019-4-22',
@@ -25,12 +26,19 @@ const config = {
     }
   },
   defineConstants: {
+    Adef: '"a"'
+  },
+  alias: {
+    '@res': path.resolve(__dirname, '..', 'res'),
+    '@images': path.resolve(__dirname, '..', 'res/images')
   },
   copy: {
-    patterns: [
-    ],
     options: {
-    }
+      ignore: ['*.jpeg']
+    },
+    patterns: [
+      { from : 'res/', to: 'dist/res', ignore: '*.png' },
+    ],
   },
   weapp: {
     module: {
@@ -70,6 +78,10 @@ const config = {
   h5: {
     publicPath: '/',
     staticDirectory: 'static',
+    router: {
+      mode: 'hash',
+      basename: '/video/',
+    },
     module: {
       postcss: {
         autoprefixer: {
