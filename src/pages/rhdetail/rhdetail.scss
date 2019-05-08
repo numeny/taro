@@ -42,7 +42,6 @@ display: inline-block;width: .6rem;height: 1rem;background-repeat: no-repeat;-we
   flex-direction: colume;
   flex-wrap: nowrap;
   justify-content: space-around;
-  position: fixed;
 }
 
 .classify-title-item {
@@ -67,6 +66,7 @@ display: inline-block;width: .6rem;height: 1rem;background-repeat: no-repeat;-we
   display: flex;
   flex-direction: colume;
   flex-wrap: nowrap;
+  justify-content: space-around;
   background-color: #EEE;
   margin-left: 10px;
   margin-right: 10px;

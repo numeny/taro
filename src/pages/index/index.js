@@ -1,5 +1,5 @@
 import Taro, { Component, Events } from '@tarojs/taro'
-import { View, Text, Image, Video, Button, Icon, Progress, Checkbox, Switch, Form, Slider, Picker, PickerView, PickerViewColumn, Swiper, SwiperItem } from '@tarojs/components'
+import { View, Text, Image, Input, Video, Button, Icon, Progress, Checkbox, Switch, Form, Slider, Picker, PickerView, PickerViewColumn, Swiper, SwiperItem, Navigator } from '@tarojs/components'
 
 import Welcome from './welcome'
 import Clock from './clock'
@@ -24,7 +24,7 @@ export default class Index extends Component {
 
     Taro.showToast({title: Adef})
 
-    Taro.navigateTo({url: '/v.html'})
+    Taro.navigateTo({url: '/pages/rhdetail/rhdetail'})
 
     this.setState({isOn: !b})
 
@@ -39,25 +39,42 @@ export default class Index extends Component {
 
   render () {
     return (
-      <View className='container'>
-        <Swiper
-          className='test-h'
-          indicatorColor='#999'
-          indicatorActiveColor='#333'
-          circular
-          indicatorDots
-          autoplay>
-          <SwiperItem>
-            <Image src={namedPng} width="100%" />
-          </SwiperItem>
-          <SwiperItem>
-            <Image src={namedPng} width="100%" />
-          </SwiperItem>
-          <SwiperItem>
-            <Image src={namedPng} width="100%" />
-          </SwiperItem>
-        </Swiper>
-        <Video width='100px' height='100px' src={namedVideo} />
+      <View className='top-container'>
+        <View className='top-title-container'>
+          <Image className='top-title-back' />
+          <Text className='top-title-city'> city </Text>
+          <Input type='text' placeholder='look up resthome' className='top-title-input' />
+          <Text className='top-title-menu'> menu </Text>
+        </View>
+
+        <View className='classify-title-container'>
+          <Text className='classify-title-item'> 价格 </Text>
+          <Text className='classify-title-item'> 床位数 </Text>
+          <Text className='classify-title-item'> 类型 </Text>
+          <Text className='classify-title-item'> 性质 </Text>
+        </View>
+        <Video width='150px' height='190px' src={namedVideo} />
+        <View className='rh-list-container'>
+          <View className='rh-one-container' onClick={this.click_button.bind(this)}>
+            <Image src={namedPng} className='rh-one-img'/>
+            <View className='rh-one-desc-container'>
+              <Text className='rh-one-desc-head'> my red</Text>
+              <Text className='rh-one-desc'> my red</Text>
+              <Text className='rh-one-desc'> my red</Text>
+            </View>
+          </View>
+          <Navigator url='/pages/rhdetail/rhdetail' className='rh-one-container'>
+          <View className='rh-one-container'>
+            <Image src={namedPng} className='rh-one-img'/>
+            <View className='rh-one-desc-container'>
+              <Text className='rh-one-desc-head'> my red</Text>
+              <Text className='rh-one-desc'> my red</Text>
+              <Text className='rh-one-desc'> my red</Text>
+            </View>
+          </View>
+          </Navigator>
+        </View>
+        <Image src={namedPng} />
         <Button size='mini' >按钮</Button>
         <View> {Taro.getEnv()} </View>
         <Button size='mini' type='warn' onClick={this.click_button.bind(this)}>按钮</Button>
@@ -68,7 +85,6 @@ export default class Index extends Component {
         <Welcome />
         <Clock />
         <Toggle />
-        <Image src={namedPng} /> 
       </View>
     )
   }

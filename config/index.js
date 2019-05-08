@@ -79,8 +79,8 @@ const config = {
     publicPath: '/',
     staticDirectory: 'static',
     router: {
-      mode: 'hash',
-      basename: '/video/',
+      mode: 'browser',
+      basename: '/',
     },
     module: {
       postcss: {
